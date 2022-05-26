@@ -37,41 +37,31 @@ End the programm
 
 ``` Python
 # Import the necessary packages
-
 import cv2
-import numpy
-
+import numpy as np
+import matplotlib.pyplot as plt
 
 # Create the Text using cv2.putText
-
-NameImage = numpy.zeros((100,1000),dtype='uint8')
-font = cv2.FONT_ITALIC
-cv2.putText(NameImage,'Koduru Sanath Kumar Reddy',(50,70),font,2,(255),5,cv2.LINE_4)
-cv2.imshow("Name Image",NameImage)
-
-
+image= np.zeros((100,400),dtype='uint8')
+font = cv2.FONT_HERSHEY_SIMPLEX
+cv2.putText(image,'SANDEEP',(5,70), font,2,(255),5,cv2.LINE_AA)
+cv2.imshow("Name",image)
 
 # Create the structuring element
-
 kernel1 = cv2.getStructuringElement(cv2.MORPH_CROSS,(7,7))
 
-
-
 # Erode the image
-
-erodeImage = cv2.erode(NameImage,kernel1)
-
-
+erodeImage = cv2.erode(image,kernel1)
+cv2.imshow("Erode Image",erodeImage)
 
 # Dilate the image
-
-
-dilationImage = cv2.dilate(NameImage,kernel1)
-
-# Displaying the image
-cv2.imshow("Name Image",NameImage)
-cv2.imshow("Erode Image",erodeImage)
+dilationImage = cv2.dilate(image,kernel1)
 cv2.imshow("Dilated Image",dilationImage)
+
+
+
+cv2.waitKey(0)
+cv2.DestroyAllWindows
 
 ```
 ## Output:
